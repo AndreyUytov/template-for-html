@@ -1,0 +1,58 @@
+a {
+  text-decoration: none;
+  color: inherit;
+  font: inherit;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Gilroy';
+  font-size: 18px;
+  line-height: 26px;
+  color: #fff;
+  background-color: var(--fon-color);
+}
+
+.content-box-component {
+  box-sizing: content-box;
+}
+
+.visually-hidden:not(:focus):not(:active),
+input[type='checkbox'].visually-hidden,
+input[type='radio'].visually-hidden {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.list {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
