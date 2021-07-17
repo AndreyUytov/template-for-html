@@ -6,7 +6,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const autoprefixer = require('autoprefixer')
 const cssnano = require('cssnano')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 function generateHtmlPlugins(templateDir) {
   const templateFiles = fs.readdirSync(path.resolve(__dirname, templateDir))
@@ -126,7 +125,7 @@ module.exports = (env) => {
           ],
         },
         {
-          test: /\.(png|jpe?g|gif|woff|woff2|ttf|svg|webp)$/,
+          test: /\.(png|jpe?g|gif|woff|woff2|ttf|webp)$/,
           use: [
             {
               loader: 'file-loader',
@@ -137,9 +136,6 @@ module.exports = (env) => {
                   } else return '[name].[ext]'
                 },
                 outputPath: (url, resourcePath) => {
-                  if (/svg/.test(resourcePath)) {
-                    return `img/svg/${url}`
-                  }
                   if (/images/.test(resourcePath)) {
                     return `img/${url}`
                   }
@@ -159,6 +155,11 @@ module.exports = (env) => {
               loader: 'html-loader',
             },
           ],
+        },
+        {
+          test: /\.svg$/,
+          include: path.resolve(__dirname, 'src/images/svg'),
+          use: [{ loader: 'svg-sprite-loader' }],
         },
       ],
     },
